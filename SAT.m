@@ -1,8 +1,8 @@
-function [intersect] = SAT(P1,P2)
+function [Intersect] = SAT(P1,P2)
 
 P1 = [P1;P1(1,:)];
 P2 = [P2,;P2(1,:)];
-intersect = 1;
+Intersect = true;
 
 for j = 2:4
     x = P1(j,1) - P1(j-1,1);
@@ -14,32 +14,31 @@ for j = 2:4
     x_rot = -y;
     y_rot = x;
     Intersect = CheckSide(P1, P2, x_rot, y_rot,x_ref,y_ref);   
-  if (Intersect == 0)
+  if (Intersect == false)
     break;
   end
 end
-    if (Intersect == 1)
+    if (Intersect == true)
         for j=2:4
             x = P2(j,1) - P2(j-1,1); 
-            y = P2(j,2) - P2(j-1,2); 
-    %
+            y = P2(j,2) - P2(j-1,2);
             x_ref = P2(j-1,1);
             y_ref = P2(j-1,2);
     
     % compute the perpendcular to the edge vector
             x_rot = -y;
             y_rot = x;
-            Intersect = CheckSide(rect1,rect2, x_rot,y_rot,x_ref,y_ref);
-    if (Intersect == 0)
+            Intersect = CheckSide(P1,P2, x_rot,y_rot,x_ref,y_ref);
+    if (Intersect == false)
       break;
     end    
-  end  
+        end  
     end
 end
 
 function intersect = CheckSide(P1,P2,x_rot,y_rot,x_ref,y_ref)
     
-    intersect = 1;
+    intersect = true;
     side1 = zeros(1,3);
     side2 = zeros(1,3);
     for k=1:3

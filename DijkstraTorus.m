@@ -82,7 +82,45 @@ while true
    
     %%% All of your code should be between the two lines of stars. 
     % *******************************************************************
-    
+    if(j<ncols)
+   neighbor1 = sub2ind (size(map), i, j+1);
+   if (map(neighbor1)~=2 && map(neighbor1)~=3 && map(neighbor1)~=4 && map(neighbor1)~=5)
+       map(neighbor1) = 4; 
+       distances(neighbor1) = min_dist +1;
+       parent (neighbor1) = current;
+       %numExpanded = numExpanded + 1;
+   end;
+   end;
+      
+   if(j>nrows)
+   neighbor2 = sub2ind (size(map), i, j-1);
+   if (map(neighbor2)~=2 && map(neighbor2)~=3 && map(neighbor2)~=4 && map(neighbor2)~=5)
+       map(neighbor2) = 4;       
+       distances(neighbor2) = min_dist +1;
+       parent (neighbor2) = current;  
+       %numExpanded = numExpanded + 1;
+   end;
+   end;
+   
+   if(i<ncols)
+      neighbor3 = sub2ind (size(map), i+1, j);
+   if (map(neighbor3)~=2 && map(neighbor3)~=3 && map(neighbor3)~=4 && map(neighbor3)~=5)
+       map(neighbor3) = 4;
+       distances(neighbor3) = min_dist +1;
+       parent (neighbor3) = current;
+       %numExpanded = numExpanded + 1;
+   end;
+   end;
+   
+   if(i>nrows) 
+       neighbor4 = sub2ind (size(map), i-1, j);
+   if (map(neighbor4)~=2 && map(neighbor4)~=3 && map(neighbor4)~=4 && map(neighbor4)~=5)
+       map(neighbor4) = 4;  
+       distances(neighbor4) = min_dist +1;
+       parent (neighbor4) = current;
+       %numExpanded = numExpanded + 1;
+   end; 
+   end;
     
     % *******************************************************************
 end
