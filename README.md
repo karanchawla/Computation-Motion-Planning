@@ -1,3 +1,3 @@
-# Computation-Motion-Planning---
-Assignment 2 for the Coursera course. Path finding using Dijkstra after determining CSpace. 
+# Computation-Motion-Planning
+Assignments for the Coursera course. 
   
